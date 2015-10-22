@@ -1,0 +1,25 @@
+<%= form_for(@pick) do |f| %>
+  <% if @pick.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pick.errors.count, "error") %> prohibited this pick from being saved:</h2>
+
+      <ul>
+      <% @pick.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :player %><br>
+    <%= f.text_field :player %>
+  </div>
+  <div class="field">
+    <%= f.label :idea %><br>
+    <%= f.text_area :idea %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
