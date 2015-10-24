@@ -10,13 +10,17 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= f.label :choose_team %><br>
+    <%= f.collection_select :category_id, Category.all, :id, :team, { promt: "Choose a Team" } %>
+  </div>
 
   <div class="field">
     <%= f.label :player %><br>
     <%= f.text_field :player %>
   </div>
   <div class="field">
-    <%= f.label :idea %><br>
+    <%= f.label :share_a_draft_pick_or_idea %><br>
     <%= f.text_area :idea %>
   </div>
   <div class="actions">

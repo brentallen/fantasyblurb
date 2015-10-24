@@ -7,10 +7,16 @@ class PicksController < ApplicationController
   def index
     @picks = Pick.all
   end
+  
+  def home
+    @picks = Pick.all
+    @category_id = Category
+  end
 
   # GET /picks/1
   # GET /picks/1.json
   def show
+    
   end
 
   # GET /picks/new
@@ -57,7 +63,7 @@ class PicksController < ApplicationController
   def destroy
     @pick.destroy
     respond_to do |format|
-      format.html { redirect_to picks_url, notice: 'Pick was successfully destroyed.' }
+      format.html { redirect_to home_path, notice: 'Pick was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +76,6 @@ class PicksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pick_params
-      params.require(:pick).permit(:player, :idea)
+      params.require(:pick).permit(:player, :idea, :category_id)
     end
 end

@@ -1,13 +1,28 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-  background-color: #fff;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+.hello {
+    background-image: url("picks-backgrounds.jpg");
+    background-size: 100% 475px;
+    background-repeat: no-repeat;
+    background-color: white;
 }
+
+
+
+.poppy{
+    
+    
+    position: relative;
+    top: -325px;
+    left: 690px;
+    
+    
+    
+}
+
+
+
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;

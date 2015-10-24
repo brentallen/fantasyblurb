@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :picks
   
+  get '/home' => 'picks#home'
   root 'picks#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
