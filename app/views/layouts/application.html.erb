@@ -20,9 +20,9 @@
           <span class="icon-bar"></span>
         </button>
         
-        
-          <%= link_to image_tag('logo.jpg'), root_path %>
-          
+        <div class="logo">
+          <%= link_to image_tag('fantasy-blurb.gif'), root_path  %>
+        </div>
           
         
         
@@ -40,7 +40,7 @@
           <% if current_user %>
             <li><%= link_to "Sign Out",  destroy_user_session_path, method: :delete, class: "sign-out" %></li>
            <% else %>
-             <li><%= link_to "Join",  new_user_registration_path, {:style=> "color: white;font-size: 15px;border: 1px solid black; background: rgba(0,0,0,0); padding: 10px 25px 10px 25px;text-decoration: none;margin-top: 10px;"}  %></li>
+             <li><%= link_to "Join",  new_user_registration_path, {:style=> "color: black;font-size: 15px;border: 1px solid black; background: rgba(0,0,0,0); padding: 10px 25px 10px 25px;text-decoration: none;margin-top: 10px;"}  %></li>
              <li><%= link_to "Sign In", new_user_session_path,  {:style=> "color:black; font-size:15px;padding: 10px 20px 10px 20px; margin-top: 10px;"} %> </li>
           <% end %>
            

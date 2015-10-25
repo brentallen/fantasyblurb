@@ -1,6 +1,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.logo{
+  position: relative;
+  
+  left: -75px;
+}
+
+.logo:hover {
+  position: relative;
+  background-color: white !important;
+  left: -75px;
+}
+
+
 .hello {
     background-image: url("picks-backgrounds.jpg");
     background-size: 100% 475px;
@@ -39,11 +52,11 @@ pre {
 a {
   color: #000;
   &:visited {
-    color: #666;
+    color: black;
   }
   &:hover {
     color: #fff;
-    background-color: #000;
+    
   }
 }
 

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :picks
-  
+  resources :users do
+    resource :profile
+  end
   get '/home' => 'picks#home'
   root 'picks#index'
 
