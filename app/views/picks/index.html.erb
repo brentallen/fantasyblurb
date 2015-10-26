@@ -1,11 +1,19 @@
-
-
 <body div class="hello">
-   
+    
+    <% if user_signed_in? %>
+       <!-- show edit profile links and other streaming stuff
+        -->
+        <% if current_user.profile %>
+            <%= link_to "Edit your profile", edit_user_profile_path(current_user) %>
+            <%= link_to "View your profile", user_path(current_user) %>
+        <% else %>
+           <%= link_to "Create your profile", new_user_profile_path(current_user) if current_user %>
+        <% end %>
+          
+   <% else %>
 
-
-<%= link_to "Create your profile", new_user_profile_path(current_user) if current_user %>
-
+    <!-- If the user is not signed in, we show signup links and everything below 
+    -->
 
 
     <div class="inline">
@@ -28,7 +36,7 @@
 
 <h2>GET IT ON THE GO MOBILE FRIENDLY</h2>
 -->
-
+    <% end %>
 </div>
 
 

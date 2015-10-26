@@ -1,0 +1,26 @@
+<%= form_for @profile, url: user_profile_path do |f| %>
+        <div class="form-group">
+          <%= f.label :user_name %>
+          <%= f.text_field :user_name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :location %>
+          <%= f.text_field :location, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :favorite_team %>
+          <%= f.text_field :favorite_team, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :Bio %>
+          <%= f.text_area :description, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :strategy %>
+          <%= f.select :strategy, ['Get the most expensive players', 'Look for Diamonds in the rough'], {}, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Update Profile", class: 'btn btn-primary' %>
+        </div>
+<% end %>
+ 
