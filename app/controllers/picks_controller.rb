@@ -1,6 +1,7 @@
 class PicksController < ApplicationController
   before_action :set_pick, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index,:home, :show]
+ 
 
   # GET /picks
   # GET /picks.json
@@ -16,7 +17,7 @@ class PicksController < ApplicationController
   # GET /picks/1
   # GET /picks/1.json
   def show
-    
+     
   end
 
   # GET /picks/new
@@ -26,6 +27,7 @@ class PicksController < ApplicationController
 
   # GET /picks/1/edit
   def edit
+  
   end
 
   # POST /picks
@@ -66,6 +68,18 @@ class PicksController < ApplicationController
       format.html { redirect_to home_path, notice: 'Pick was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def upvote
+    @pick = Pick.find(params[:id])
+    @pick.upvote_by current_user
+    redirect_to :back
+  end
+  
+  def downvote
+    @pick = Pick.find(params[:id])
+    @pick.downvote_by current_user
+    redirect_to :back
   end
 
   private

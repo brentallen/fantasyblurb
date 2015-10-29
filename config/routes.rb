@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
+  
+ 
+  
   devise_for :users
-  resources :picks
+  resources :picks do
+    member do
+      put "like", to: "picks#upvote"
+      put "dislike", to: "picks#downvote"
+    end
+  end
   resources :users do
     resource :profile
   end

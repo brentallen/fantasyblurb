@@ -13,6 +13,16 @@
   <strong>Idea:</strong>
   <%= @pick.idea %>
 </p>
+                      <%= link_to like_pick_path(@pick), method: :put, class: "btn btn-default btn-sm" do %>
+                        <span class="glyphicon glyphicon-chevron-up"></span>
+                        Upvote
+                        <%= @pick.get_upvotes.size %>
+                      <% end %>
+                      <%= link_to dislike_pick_path(@pick), method: :put, class: "btn btn-default btn-sm" do %>
+                        <span class="glyphicon glyphicon-chevron-down">
+                        Downvote
+                        <%= @pick.get_downvotes.size %>
+                      <% end %>
+<%= link_to 'Edit', edit_pick_path(@pick) %> 
 
-<%= link_to 'Edit', edit_pick_path(@pick) %> |
-<%= link_to 'Back', picks_path %>
+<%= link_to 'Back', home_path %>

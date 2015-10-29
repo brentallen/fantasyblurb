@@ -1,4 +1,4 @@
-<body div class="hello">
+
     
     <% if user_signed_in? %>
        <!-- show edit profile links and other streaming stuff
@@ -6,6 +6,57 @@
         <% if current_user.profile %>
             <%= link_to "Edit your profile", edit_user_profile_path(current_user) %>
             <%= link_to "View your profile", user_path(current_user) %>
+                <!--<div class="text-center"> -->
+              <h1>Latest Blurbs</h1>
+                <%= link_to 'New Pick', new_pick_path, class: "btn btn-primary" %>
+                
+              
+              </br>
+              
+              
+              
+              <%  @picks.each do |pick| %>
+                <%= content_tag(:div, class: 'blurb') do %>
+                
+                    <%= content_tag(:div, class: 'teams') do %>
+                     <%= pick.category.team %>
+                    <% end %>
+                    <%= content_tag(:div, class: 'players') do %>
+                      <%= pick.player %></br>
+                    <% end %>
+                    <%= content_tag(:div, class: 'ideas') do %>
+                      <%= pick.idea %></br>
+                    <% end %>
+                    <div class="btn-group">
+      
+                      <%= link_to like_pick_path(pick), method: :put, class: "btn btn-default btn-sm" do %>
+                        <span class="glyphicon glyphicon-chevron-up"></span>
+                        Upvote
+                        <%= pick.get_upvotes.size %>
+                      <% end %>
+                      <%= link_to dislike_pick_path(pick), method: :put, class: "btn btn-default btn-sm" do %>
+                        <span class="glyphicon glyphicon-chevron-down">
+                        Downvote
+                        <%= pick.get_downvotes.size %>
+                      <% end %>
+                     </div>
+    
+                    <%= content_tag(:div, class: 'text-center') do %>
+                      <%= link_to 'Show', pick %>
+                      <% if pick.user == current_user %>
+                      <%= link_to 'Edit', edit_pick_path(pick) %>
+                      <%= link_to 'Destroy', pick, method: :delete, data: { confirm: 'Are you sure?' } %>
+                      <% end %>
+                    <%end%>
+                    </br>
+                    </br>
+                    </br>
+                <% end %>
+                  </br>
+                  </br>
+                  </br>
+              <% end %>
+  
         <% else %>
            <%= link_to "Create your profile", new_user_profile_path(current_user) if current_user %>
         <% end %>
@@ -14,7 +65,7 @@
 
     <!-- If the user is not signed in, we show signup links and everything below 
     -->
-
+<body div class="hello">
 
     <div class="inline">
             <div class="col-md-7 col-md-offset-5 container">

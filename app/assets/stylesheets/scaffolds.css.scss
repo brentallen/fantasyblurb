@@ -1,6 +1,32 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.blurb{
+  border: 2px solid black;
+  width: 400px;
+}
+
+.teams{
+  text-align: left;
+  font-size: 40px;
+  color: #025445;
+  //text-align: left;
+  margin: 0px 10px;
+}
+
+.players{
+  font-size: 25px;
+  text-align: left;
+  margin: -15px 10px 0px 10px;
+  
+}
+
+.ideas{
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+}
+
 .logo{
   position: relative;
   
@@ -37,7 +63,7 @@
 
 
 
-p, ol, ul, td {
+/*p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -98,3 +124,5 @@ div {
     list-style: square;
   }
 }
+*/
+

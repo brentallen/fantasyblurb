@@ -13,6 +13,8 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'devise', '~> 3.4.0'
 #Use paperclip gem for images
 gem "paperclip", "~> 4.3"
+#User acts as votable to allow user voting
+gem 'acts_as_votable', '~> 0.10.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
