@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.3'
 #Use bootstrap for styles
 gem 'bootstrap-sass', '~> 3.3.5'
+#Font-awesome for icons
+gem 'font-awesome-sass', '~> 4.2.0'
 #Devise gem for user authentication
 gem 'devise', '~> 3.4.0'
 #Use paperclip gem for images

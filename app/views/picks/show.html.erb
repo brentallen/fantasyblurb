@@ -1,28 +1,68 @@
-<div class="container">
-<p id="notice"><%= notice %></p>
+
+    <div class="container">
+    <p id="notice"><%= notice %></p>
+    </div>
+    
+  
+      <div class="well col-md-4 col-md-offset-4">
+        
+        <%= content_tag(:div, class: 'teams') do %>
+          <h1> <%= @pick.category.team %> </h1>
+        <% end %>
+        
+        <%= content_tag(:div, class: 'players') do %>
+          <p> <%= @pick.player %> </p>
+        <% end %>
+        
+        <%= content_tag(:div, class: 'ideas') do %>
+          <p> <%= @pick.idea %> </p>
+        <% end %>
+      
+          <div class="text-center">
+            <div class="btn-group">
+      
+                <%= link_to like_pick_path(@pick), method: :put, class: "btn btn-success btn-sm" do %>
+                  <i class="fa fa-thumbs-up"></i>
+                    
+                  <%= @pick.get_upvotes.size %>
+                  
+                <% end %>
+                
+                <%= link_to dislike_pick_path(@pick), method: :put, class: "btn btn-danger btn-sm" do %>
+                  <i class="fa fa-thumbs-down"></i>
+                  
+                  <%= @pick.get_downvotes.size %>
+                <% end %>
+                
+            </div>
+          </div>
+        </div>
+  
+  
+<div class="col-md-4 col-md-offset-4">                   
+    <h3 class="comments_title">
+      <%= @pick.comments.count %> Comments
+    </h3>
+                    
+    <div id="comments">
+      <%= render :partial => @pick.comments %>
+    </div>
+                      
+    <% if current_user %>
+      <%= form_for [@pick, Comment.new]  do |f| %>
+      <div class="field">
+      <%= f.text_area :body, class: "form-control" %>
+      </div>
+    <br>
+      <%= f.submit "Add Comment", class: "btn btn-primary" %>
+      <% end %>
+      <%= link_to 'Edit', edit_pick_path(@pick) %> 
+      <%= link_to 'Back', home_path %>
+    <% else %>
+      <%= link_to "JOIN ", "#", class: 'btn btn-primary' %>
+      <%= link_to "SIGN IN", "#", class: 'btn btn-primary' %>
+    <% end %>
+    
+ 
+  
 </div>
-
-<h1><%= @pick.category.team %></h1>
-
-<p>
-  <strong>Player:</strong>
-  <%= @pick.player %>
-</p>
-
-<p>
-  <strong>Idea:</strong>
-  <%= @pick.idea %>
-</p>
-                      <%= link_to like_pick_path(@pick), method: :put, class: "btn btn-default btn-sm" do %>
-                        <span class="glyphicon glyphicon-chevron-up"></span>
-                        Upvote
-                        <%= @pick.get_upvotes.size %>
-                      <% end %>
-                      <%= link_to dislike_pick_path(@pick), method: :put, class: "btn btn-default btn-sm" do %>
-                        <span class="glyphicon glyphicon-chevron-down">
-                        Downvote
-                        <%= @pick.get_downvotes.size %>
-                      <% end %>
-<%= link_to 'Edit', edit_pick_path(@pick) %> 
-
-<%= link_to 'Back', home_path %>

@@ -6,11 +6,11 @@ class PicksController < ApplicationController
   # GET /picks
   # GET /picks.json
   def index
-    @picks = Pick.all
+    @picks = Pick.all.order("created_at DESC")
   end
   
   def home
-    @picks = Pick.all
+    @picks = Pick.all.order("created_at DESC")
     @category_id = Category
   end
 

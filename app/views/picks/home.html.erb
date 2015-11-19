@@ -1,39 +1,78 @@
 <!--<div class="text-center"> -->
-  <h1>Latest Blurbs</h1>
-    <%= link_to 'New Pick', new_pick_path, class: "btn btn-primary" %>
-    
-  
-  </br>
-  
-  
-  
-  <%  @picks.each do |pick| %>
-    <%= content_tag(:div, class: 'blurb') do %>
-        <%= content_tag(:div, class: 'teams') do %>
-         <%= pick.category.team %>
-        <% end %>
-        <%= content_tag(:div, class: 'players') do %>
-          <%= pick.player %></br>
-        <% end %>
-        <%= content_tag(:div, class: 'ideas') do %>
-          <%= pick.idea %></br>
-        <% end %>
-        
-        <%= content_tag(:div, class: 'text-center') do %>
-          <%= link_to 'Show', pick %>
+
+<div class="container">
+  <div class="row">
+    <div class="text-center main-line">
+      <h1><i class="fa fa-comments"></i> LATEST BLURBS</h1>
+    </div>
+    <div class="col-md-8">     
+      <%  @picks.each do |pick| %>
+        <%= content_tag(:div, class: 'well col-md-6 col-md-offset-6') do %>
+          <%= content_tag(:div, class: 'teams') do %>
+            <%= pick.category.team %>
+          <% end %>
+          
+          <%= content_tag(:div, class: 'players') do %>
+            <%= pick.player %></br>
+          <% end %>
+          
+          <%= content_tag(:div, class: 'ideas') do %>
+            <%= pick.idea %></br>
+          <% end %>
+          
+          <div class="text-center">
+            <div class="btn-group">
+                                      
+              <%= link_to like_pick_path(pick), method: :put, class: "btn btn-success btn-sm" do %>
+                <i class="fa fa-thumbs-up"></i>
+                <%= pick.get_upvotes.size %>
+              <% end %>
+              
+              <%= link_to dislike_pick_path(pick), method: :put, class: "btn btn-danger btn-sm" do %>
+                <i class="fa fa-thumbs-down"></i>
+                <%= pick.get_downvotes.size %>
+              <% end %>
+                                        
+              <%= link_to 'Comment', pick , class: "btn btn-primary btn-sm" %>
+            </div>
+          </div>
+                            
+          <%= content_tag(:div, class: 'text-right') do %>  
             <% if pick.user == current_user %>
-            <%= link_to 'Edit', edit_pick_path(pick) %>
-            <%= link_to 'Destroy', pick, method: :delete, data: { confirm: 'Are you sure?' } %>
+            
+              <%= link_to edit_pick_path(pick) do %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
+              
+              <%= link_to pick, method: :delete, data: { confirm: 'Are you sure you want to DELETE this?' } do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
             <% end %>
-        <%end%>
-        </br>
-        </br>
-        </br>
-    <% end %>
-      </br>
-      </br>
-      </br>
-  <% end %>
+          <% end %>
+                            
+        <% end %>
+      <% end %>
+    </div>
+    
+    <div class="well col-md-3 spotty">
+        <span class="trending-teams">Trending by TEAMS</span>
+          <div class="dropdown">
+            <button class="btn btn-ruff dropdown-toggle" type="button" data-toggle="dropdown">Teams
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <% Category.all.each do |category| %>
+            <li><%= link_to category.team, picks_path(category: category.team), class: "text-center" %></li>
+            <% end %>
+            </ul>
+          </div>
+        </div>  
+      
+      
+  </div>
+</div>
+
+      
   
+
 
 
